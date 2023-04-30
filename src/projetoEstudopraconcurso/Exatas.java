@@ -4,11 +4,11 @@ public class Exatas extends Disciplinas {
 	
 	private String questoesbinarias;
 	
-	public Exatas(String nome, String discursiva, String questoes, String grau, String questoesbinarias, String resposta) {
+	public Exatas(String nomeMateria, String discursiva, String questoes, String grauDificuldade, String questoesBinarias, String resposta) {
 		this.questoes = questoes;
-		this.graudedificuldade = grau;
-		this.nomeMateria = nome;
-		this.questoesbinarias = questoesbinarias;		
+		this.graudedificuldade = grauDificuldade;
+		this.nomeMateria = nomeMateria;
+		this.questoesbinarias = questoesBinarias;		
 		this.resposta = resposta;
 	}
 		
@@ -24,5 +24,6 @@ public class Exatas extends Disciplinas {
 		return "nome: " + nomeMateria + ", questões:" + questoes
 		+ ", grau de dificuldade: " + graudedificuldade + ", Questões binaria?" + questoesbinarias + ", reposta:" + resposta;
 	}
+
 }
 

@@ -6,10 +6,10 @@ public class Concurso {
 	private String horario;
 	private String dia;
 	
-	public Concurso(String n, String h, String d) {
-		this.nome = n; 
-		this.dia = d;
-		this.horario = h;
+	public Concurso(String nome1, String horario1, String dia1) {
+		this.nome = nome1; 
+		this.dia = dia1;
+		this.horario = horario1;
 	}
 
 	public String getNome() {
@@ -35,6 +35,7 @@ public class Concurso {
 	public void setDia(String dia) {
 		this.dia = dia;
 	}
+	
 
 	@Override
 	public String toString() {

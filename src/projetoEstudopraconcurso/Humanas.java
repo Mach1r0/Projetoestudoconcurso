@@ -1,16 +1,27 @@
 package projetoEstudopraconcurso;
+import java.util.ArrayList;
+import java.util.List;
 
 public class  Humanas  extends Disciplinas{
 	
 	private String questoesdiscurvisas;
+	List<String> materias = new ArrayList<>();
 	
-	public Humanas(String nome, String discursiva, String questoes, String grau, String resposta) {
-		this.questoesdiscurvisas = discursiva;
+	public Humanas(String nomeMateria, String discursiva, String questoesDiscursiva, String grauDificuldade, String resposta, String questoes) {
+		this.questoesdiscurvisas = questoesDiscursiva;
 		this.questoes = questoes;
-		this.graudedificuldade = grau;
-		this.nomeMateria = nome;
+		this.graudedificuldade = grauDificuldade;
+		this.nomeMateria = nomeMateria;
 		this.resposta = resposta;
-	}
+		materias.add("Portugues");
+		materias.add("F");
+		materias.add("Sociologia");
+		
+		for(int i = 0 ; i < materias.size(); i++){
+			System.out.println(materias.get(i));
+		}
+		
+	}	
 	
 	public String getQuestoesdiscurvisas() {
 		return questoesdiscurvisas;
@@ -25,4 +36,6 @@ public class  Humanas  extends Disciplinas{
 			return "nome: " + nomeMateria + ", questoes:" + questoes + 
 			", grau de dificuldade: " + graudedificuldade + ", questao discursiva" +questoesdiscurvisas + ", resposta:" + resposta;
 	}
+
+	
 }
