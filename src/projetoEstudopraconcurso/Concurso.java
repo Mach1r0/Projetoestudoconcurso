@@ -1,15 +1,18 @@
 package projetoEstudopraconcurso;
 
+import java.util.ArrayList;
+
 public class Concurso {
 	
 	private String nome;
-	private String horario;
+	private String edital;
 	private String dia;
+	private ArrayList<Disciplinas> disciplinas = new ArrayList<Disciplinas>();
 	
-	public Concurso(String nome1, String horario1, String dia1) {
+	public Concurso(String nome1, String dia1, String edital) {
 		this.nome = nome1; 
 		this.dia = dia1;
-		this.horario = horario1;
+		this.edital = edital;
 	}
 
 	public String getNome() {
@@ -20,14 +23,6 @@ public class Concurso {
 		this.nome = nome;
 	}
 
-	public String getHorario() {
-		return horario;
-	}
-
-	public void setHorario(String horario) {
-		this.horario = horario;
-	}
-
 	public String getDia() {
 		return dia;
 	}
@@ -36,9 +31,24 @@ public class Concurso {
 		this.dia = dia;
 	}
 	
+	public String getEdital() {
+		return edital;
+	}
+
+	public void setEdital(String edital) {
+		this.edital = edital;
+	}
+
+	public ArrayList<Disciplinas> getDisciplinas() {
+		return disciplinas;
+	}
+
+	public void setDisciplinas(ArrayList<Disciplinas> disciplinas) {
+		this.disciplinas = disciplinas;
+	}
 
 	@Override
 	public String toString() {
-			return "nome: " + nome + ", horario:" + horario + ", dia: " + dia;
+			return "nome do concurso: " + nome + ", edital:" + edital + ", data: " + dia;
 	}
 }

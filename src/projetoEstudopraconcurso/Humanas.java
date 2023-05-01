@@ -1,40 +1,27 @@
 package projetoEstudopraconcurso;
-import java.util.ArrayList;
-import java.util.List;
 
 public class  Humanas  extends Disciplinas{
 	
-	private String questoesdiscurvisas;
-	List<String> materias = new ArrayList<>();
+	private String questoesDiscursivas;
 	
-	public Humanas(String nomeMateria, String discursiva, String questoesDiscursiva, String grauDificuldade, String resposta, String questoes) {
-		this.questoesdiscurvisas = questoesDiscursiva;
-		this.questoes = questoes;
-		this.graudedificuldade = grauDificuldade;
-		this.nomeMateria = nomeMateria;
-		this.resposta = resposta;
-		materias.add("Portugues");
-		materias.add("F");
-		materias.add("Sociologia");
-		
-		for(int i = 0 ; i < materias.size(); i++){
-			System.out.println(materias.get(i));
-		}
-		
-	}	
-	
-	public String getQuestoesdiscurvisas() {
-		return questoesdiscurvisas;
+	public String getQuestoesDiscursivas() {
+		return questoesDiscursivas;
 	}
 
-	public void setQuestoesdiscurvisas(String questoesdiscurvisas) {
-		this.questoesdiscurvisas = questoesdiscurvisas;
+	public void setQuestoesDiscursivas(String questoesDiscursivas) {
+		this.questoesDiscursivas = questoesDiscursivas;
 	}
+
+	public Humanas(String nomeMateria, String questoes, String graudeDificuldade, String questoesDiscursivas, String resposta ) {
+		super(questoes, resposta, nomeMateria, graudeDificuldade);
+		this.questoesDiscursivas = questoesDiscursivas;
+	}	
 	
 	@Override
 	public String toString() {
 			return "nome: " + nomeMateria + ", questoes:" + questoes + 
-			", grau de dificuldade: " + graudedificuldade + ", questao discursiva" +questoesdiscurvisas + ", resposta:" + resposta;
+			", grau de dificuldade: " + graudeDificuldade + ",\n" + "questao discursiva: " 
+			+ questoesDiscursivas + ", resposta:" + resposta;
 	}
 
 	

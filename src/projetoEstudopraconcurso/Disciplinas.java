@@ -2,12 +2,16 @@ package projetoEstudopraconcurso;
 public abstract class Disciplinas {
 
     protected String nomeMateria;
-    protected String graudedificuldade;
+    protected String graudeDificuldade;
     protected String questoes;
     protected String resposta;
 
-    public Disciplinas() {
-        super();
+    public Disciplinas(String questoes, String resposta, String nomeMateria, String graudeDificuldade) {
+    	this.questoes = questoes;
+		this.graudeDificuldade = graudeDificuldade;
+		this.nomeMateria = nomeMateria;
+		this.resposta = resposta;
+		
     }
 
     public String getNomeMateria() {
@@ -19,7 +23,7 @@ public abstract class Disciplinas {
     }
 
     public String getGraudedificuldade() {
-        return graudedificuldade;
+        return graudeDificuldade;
     }
 
     public String getQuestoes() {
@@ -39,7 +43,7 @@ public abstract class Disciplinas {
     }
 
     public void setGraudedificuldade(String graudedificuldade) {
-        this.graudedificuldade = graudedificuldade;
+        this.graudeDificuldade = graudedificuldade;
     }
 
  
