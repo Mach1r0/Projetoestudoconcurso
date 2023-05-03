@@ -19,7 +19,7 @@ public class  Humanas  extends Disciplinas{
 	
 	@Override
 	public String toString() {
-			return "nome: " + nomeMateria + ", questoes:" + questoes + 
+			return "Materia humanas: " + nomeMateria + ", questoes:" + questoes + 
 			", grau de dificuldade: " + graudeDificuldade + ",\n" + "questao discursiva: " 
 			+ questoesDiscursivas + ", resposta:" + resposta;
 	}

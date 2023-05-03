@@ -1,10 +1,14 @@
 package projetoEstudopraconcurso;
-public abstract class Disciplinas {
 
-    protected String nomeMateria;
-    protected String graudeDificuldade;
-    protected String questoes;
-    protected String resposta;
+import java.util.List;
+
+public abstract class Disciplinas {
+	
+	// atriby=
+    public String nomeMateria;
+    public String graudeDificuldade;
+    public String questoes;
+    public String resposta;
 
     public Disciplinas(String questoes, String resposta, String nomeMateria, String graudeDificuldade) {
     	this.questoes = questoes;
@@ -46,6 +50,11 @@ public abstract class Disciplinas {
         this.graudeDificuldade = graudedificuldade;
     }
 
- 
-
+    public static Disciplinas buscaDisciplina() {
+		return null;
+    }
 }
+
+
+
+
