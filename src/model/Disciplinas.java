@@ -1,21 +1,19 @@
-package projetoEstudopraconcurso;
-
-import java.util.List;
+package model;
 
 public abstract class Disciplinas {
-	
-	// atriby=
+
+    // atriby=
     public String nomeMateria;
     public String graudeDificuldade;
     public String questoes;
     public String resposta;
 
     public Disciplinas(String questoes, String resposta, String nomeMateria, String graudeDificuldade) {
-    	this.questoes = questoes;
-		this.graudeDificuldade = graudeDificuldade;
-		this.nomeMateria = nomeMateria;
-		this.resposta = resposta;
-		
+        this.questoes = questoes;
+        this.graudeDificuldade = graudeDificuldade;
+        this.nomeMateria = nomeMateria;
+        this.resposta = resposta;
+
     }
 
     public String getNomeMateria() {
@@ -51,10 +49,6 @@ public abstract class Disciplinas {
     }
 
     public static Disciplinas buscaDisciplina() {
-		return null;
+        return null;
     }
 }
-
-
-
-

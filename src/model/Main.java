@@ -1,20 +1,17 @@
-package  projetoEstudopraconcurso;
-
-import java.util.ArrayList;
-import java.util.Scanner;
+package model;
 
 public class Main {
-	
+
 	public static Exatas exatas;
 	public static Concurso concurso;
 	public static Humanas humanas;
 
-	public static void main(String[] args) {	
-		
-		exatas = new Exatas("MD1", "1+1", "Díficil", "sim","2");
-		humanas = new Humanas("Conhecimentos bancarios", "MyQLS é legal?", 
+	public static void main(String[] args) {
+
+		exatas = new Exatas("MD1", "1+1", "Díficil", "sim", "2");
+		humanas = new Humanas("Conhecimentos bancarios", "MyQLS é legal?",
 				"Díficil", "sim", "muito legal");
-	 	concurso = new Concurso("Banco do Brasil", "03/04/2023", "2023");
+		concurso = new Concurso("Banco do Brasil", "03/04/2023", "2023");
 
 		System.out.println(concurso.toString());
 		System.out.println();
@@ -23,6 +20,5 @@ public class Main {
 		System.out.println(exatas.toString());
 		System.out.println();
 
-		
-	}	
+	}
 }

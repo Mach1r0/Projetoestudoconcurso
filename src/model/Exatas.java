@@ -1,4 +1,4 @@
-package projetoEstudopraconcurso;
+package model;
 
 public class Exatas extends Disciplinas {
 	

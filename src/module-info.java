@@ -6,4 +6,5 @@
  *
  */
 module projetoEstudopraconcurso {
+    requires java.desktop;
 }
