@@ -4,48 +4,46 @@ import javax.swing.*;
 import java.awt.*;
 
 public class TelaPrincipal extends JFrame {
-
+	
     private JMenuBar barraMenu = new JMenuBar();
 
     public TelaPrincipal() {
     	
         setTitle("Tela Inicial");
+        
+        JMenu concursosMenu = new JMenu("Concursos");
+        JMenu questoesMenu = new JMenu("Questões");
+        
+        barraMenu.add(concursosMenu);
+        barraMenu.add(questoesMenu);
 
-        JMenuItem concursosItem = menuimagem("Concursos", "concursoicon.png");
-        JMenuItem questoesItem = menuimagem("Questões", "iconefoda.png");
-
-        concursosItem.setBorder(null);
-        questoesItem.setBorder(null);
-
-        barraMenu.add(concursosItem);
-        barraMenu.add(questoesItem);
+        JMenuItem cadastrarItem = new JMenuItem("Cadastrar");
+        JMenuItem editarItem = new JMenuItem("Editar");
+        JMenuItem materia1 = new JMenuItem("Português");
+        JMenuItem materia2 = new JMenuItem("Matemática");
+        JMenuItem materia3 = new JMenuItem("Estrutura de dados");
+        
+        concursosMenu.add(cadastrarItem);
+        concursosMenu.add(editarItem);
+        questoesMenu.add(materia1);
+        questoesMenu.add(materia3);
+        questoesMenu.add(materia2);
 
         setJMenuBar(barraMenu);
 
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JLabel label = new JLabel(new ImageIcon("imagemcentral.png"));
         panel.add(label);
-
         getContentPane().add(panel, BorderLayout.CENTER);
-
+        
         setSize(600, 400);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
-
-    private JMenuItem menuimagem(String texto, String caminhoImagem) {
-        ImageIcon icone = new ImageIcon(caminhoImagem);
-        Image imagemRedimensionada = icone.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
-        ImageIcon imagemRedimensionadaIcon = new ImageIcon(imagemRedimensionada);
-
-        JMenuItem menuItem = new JMenuItem(texto);
-        menuItem.setIcon(imagemRedimensionadaIcon);
-
-        return menuItem;
+        setLayout(new FlowLayout());
     }
 
     public static void main(String[] args) {
-            TelaPrincipal janela = new TelaPrincipal();
-            janela.setVisible(true);
-  }
+        TelaPrincipal janela = new TelaPrincipal();
+        janela.setVisible(true);
+    }
 }

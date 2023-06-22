@@ -1,0 +1,97 @@
+package view;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class CadastroConcurso extends JFrame implements ActionListener {
+
+    JLabel Titulo = new JLabel("Cadastro Concurso", SwingConstants.CENTER);
+    JLabel nome = new JLabel("Nome:");
+    JLabel dia = new JLabel("Dia:");
+    JLabel banca = new JLabel("Banca:");
+    JLabel edital = new JLabel("Edital:");
+    JLabel salario = new JLabel("Salário:");
+    JLabel vagas = new JLabel("Vagas:");
+
+    JTextField txtNome = new JTextField();
+    JTextField txtDia = new JTextField();
+    JTextField txtBanca = new JTextField();
+    JTextField txtEdital = new JTextField();
+    JTextField txtSalario = new JTextField();
+    JTextField txtVagas = new JTextField();
+
+    JButton Cadastrar = new JButton("Cadastrar");
+    JButton Cancelar = new JButton("Cancelar");
+    JButton Excluir = new JButton("Excluir");
+    JButton Consultar = new JButton("Consultar");
+
+    public CadastroConcurso() {
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setSize(400, 400);
+        setLayout(null);
+        setLocationRelativeTo(null);
+
+        // Botões
+        Titulo.setBounds(50, 20, 300, 20);
+        Titulo.setFont(new Font("Arial", Font.BOLD, 20));
+        add(Titulo);
+
+        nome.setBounds(50, 70, 100, 20);
+        add(nome);
+        txtNome.setBounds(120, 70, 200, 20);
+        add(txtNome);
+
+        dia.setBounds(50, 100, 100, 20);
+        add(dia);
+        txtDia.setBounds(120, 100, 200, 20);
+        add(txtDia);
+
+        banca.setBounds(50, 130, 100, 20);
+        add(banca);
+        txtBanca.setBounds(120, 130, 200, 20);
+        add(txtBanca);
+
+        edital.setBounds(50, 160, 100, 20);
+        add(edital);
+        txtEdital.setBounds(120, 160, 200, 20);
+        add(txtEdital);
+
+        salario.setBounds(50, 190, 100, 20);
+        add(salario);
+        txtSalario.setBounds(120, 190, 200, 20);
+        add(txtSalario);
+
+        vagas.setBounds(50, 220, 100, 20);
+        add(vagas);
+        txtVagas.setBounds(120, 220, 200, 20);
+        add(txtVagas);
+
+        Cadastrar.setBounds(50, 270, 100, 25);
+        Cadastrar.addActionListener(this);
+        add(Cadastrar);
+
+        Excluir.setBounds(160, 270, 100, 25);
+        add(Excluir);
+
+        Cancelar.setBounds(270, 270, 100, 25);
+        add(Cancelar);
+
+        Consultar.setBounds(50, 310, 320, 25);
+        add(Consultar);
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new CadastroConcurso();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+
+    }
+
+}
