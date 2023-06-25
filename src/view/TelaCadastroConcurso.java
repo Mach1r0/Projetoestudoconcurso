@@ -100,8 +100,8 @@ public class TelaCadastroConcurso extends JFrame implements ActionListener {
     }
 
     public void cadastrarbutton(ActionEvent evt) {
-        int vagas = Integer.parseInt(txtVagas.getText());
-        int salario = Integer.parseInt(txtSalario.getText());
+        int vagas = Integer.parseInt(txtVagas.getText().trim());
+        int salario = Integer.parseInt(txtSalario.getText().trim());
         boolean sucesso = true;
 
         try {

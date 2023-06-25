@@ -2,6 +2,10 @@ package model;
 
 import java.util.ArrayList;
 
+import DAO.ConcursoDAO;
+import DAO.ExceptionDAO;
+import controler.ControladoraConcurso;
+
 public class Concurso {
 
 	private String nome;
@@ -84,6 +88,11 @@ public class Concurso {
 		this.salario = salario;
 	}
 
-	public void cadastrarConcurso(Concurso concurso) {
+	public void cadastrarConcurso(Concurso concurso) throws ExceptionDAO {
+		try {
+			new ConcursoDAO().cadastrarConcurso(concurso);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

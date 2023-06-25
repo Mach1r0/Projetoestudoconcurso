@@ -3,22 +3,21 @@ create database if not exists MVC;
 use MVC; 
 
 create table concurso (
-codConcurso int auto_increment not null,
-nome varchar(50),
-dias varchar(14),
-edital varchar(30),
-vagas varchar(30),
-salario varchar(50),
-banca varchar(30)
-primary key (codConcurso));
-
+    codConcurso int auto_increment not null,
+    nome varchar(50),
+    dia varchar(50),
+    edital varchar(50),
+    vagas varchar(50),
+    salario varchar(50),
+    banca varchar(50),
+    primary key (codConcurso));
 create table matematica(
 codMatematica int auto_increment not null,
-nomemateria varchar(20),
+nomemateria varchar(50),
 graudedificuldade varchar(15),
 resposta varchar(50),
 binario varchar(50),
-primary key (codQuestao));
+primary key (codMatematica));
 
 create table portugues(
 codPortugues int auto_increment not null,
@@ -26,4 +25,4 @@ nomemateria varchar(20),
 graudedificuldade varchar(15),
 resposta varchar(50),
 discussiva varchar(50),
-primary key (codQuestao));
+primary key (codPortugues));
