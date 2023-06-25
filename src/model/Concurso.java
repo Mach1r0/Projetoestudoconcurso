@@ -1,36 +1,36 @@
- package model;
+package model;
 
 import java.util.ArrayList;
 
 public class Concurso {
-	
+
 	private String nome;
 	private String edital;
 	private String dia;
 	private String banca;
 	private int vagas;
 	private float salario;
-	
+
 	private ArrayList<Questao> disciplinas = new ArrayList<Questao>();
-	
-	public Concurso(String nome1, String dia1, String edital1, String banca1, int vagas1, float salario1) {
-		this.nome = nome1; 
-		this.dia = dia1;
-		this.edital = edital1;
-		this.vagas = vagas1;
-		this.banca = banca1;
-		this.setSalario(salario1);
-		
+
+	public Concurso(String nome, String dia, String edital, String banca, int vagas, float salario) {
+		this.nome = nome;
+		this.dia = dia;
+		this.edital = edital;
+		this.vagas = vagas;
+		this.banca = banca;
+		this.salario = salario;
 	}
-//
+
+	//
 	public int getVagas() {
 		return vagas;
 	}
-	
+
 	public void setVagas(int vagas) {
 		this.vagas = vagas;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
@@ -46,7 +46,7 @@ public class Concurso {
 	public void setDia(String dia) {
 		this.dia = dia;
 	}
-	
+
 	public String getEdital() {
 		return edital;
 	}
@@ -66,25 +66,24 @@ public class Concurso {
 	public String getBanca() {
 		return banca;
 	}
-	
+
 	public void setBanca(String banca) {
 		this.banca = banca;
 	}
-	
+
 	@Override
 	public String toString() {
-			return "nome do concurso: " + nome + ", edital:" + edital + ", data: " + dia;
+		return "nome do concurso: " + nome + ", edital:" + edital + ", data: " + dia;
 	}
-	
-	public void CadastrarConcurso(Concurso concurso){
-		
-	}
+
 	public float getSalario() {
 		return salario;
 	}
+
 	public void setSalario(float salario) {
 		this.salario = salario;
 	}
+
 	public void cadastrarConcurso(Concurso concurso) {
-			}
+	}
 }

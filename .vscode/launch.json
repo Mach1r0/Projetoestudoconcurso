@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TelaCadastroConcurso",
+            "request": "launch",
+            "mainClass": "projetoEstudopraconcurso/view.TelaCadastroConcurso",
+            "projectName": "projetoEstudopraconcurso"
+        },
+        {
+            "type": "java",
             "name": "Telaquestao",
             "request": "launch",
             "mainClass": "projetoEstudopraconcurso/view.Telaquestao",

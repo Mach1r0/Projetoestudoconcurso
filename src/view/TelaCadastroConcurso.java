@@ -22,8 +22,8 @@ public class TelaCadastroConcurso extends JFrame implements ActionListener {
     JTextField txtDia = new JTextField();
     JTextField txtBanca = new JTextField();
     JTextField txtEdital = new JTextField();
-    JTextField txtSalario = new JTextField();
-    JTextField txtVagas = new JTextField();
+    JTextField txtSalario = new JTextField("0");
+    JTextField txtVagas = new JTextField("0");
 
     JButton Cadastrar = new JButton("Cadastrar");
     JButton Cancelar = new JButton("Cancelar");
@@ -93,40 +93,35 @@ public class TelaCadastroConcurso extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-		Object src = e.getSource();
-    	if (src == Cadastrar) {
-    		cadastrarConcurso(e);
-		}
-    }
-    public void cadastrarConcurso(java.awt.event.ActionEvent evt) {
-    	String nome = txtNome.getText();
-    	String dia = txtDia.getText();
-    	String edital = txtEdital.getText();
-    	int vagas = Integer.parseInt(txtVagas.getText());
-    	String banca = txtBanca.getText();
-    	float salario = Integer.parseInt(txtSalario.getText());
-		boolean sucesso = false; 
-
-		try {
-		ControladoraConcurso controladoraConcurso = new ControladoraConcurso();
-    	controladoraConcurso.cadastrarConcurso(nome, dia, edital, vagas, banca, salario);
-    	
-    	if(sucesso == true) {
-    		JOptionPane.showMessageDialog(null,"O cadastro foi realizado com sucesso");
-    		this.Cancelar(evt);
-    	}else {
-    		JOptionPane.showMessageDialog(null,"Os campos não foram preenchidos corretamento");
-    	}
-    }catch (Exception e) {
-    	JOptionPane.showMessageDialog(null,"Erro:" + e);
-}
+        Object src = e.getSource();
+        if (src == Cadastrar) {
+            cadastrarbutton(e);
+        }
     }
 
-	private void Cancelar(ActionEvent evt) {
-		// TODO Auto-generated method stub
-		
-	}
-    
-    
-    
+    public void cadastrarbutton(ActionEvent evt) {
+        int vagas = Integer.parseInt(txtVagas.getText());
+        int salario = Integer.parseInt(txtSalario.getText());
+        boolean sucesso = true;
+
+        try {
+            ControladoraConcurso controladoraConcurso = new ControladoraConcurso();
+            sucesso = controladoraConcurso.cadastrarConcurso(txtNome.getText(), txtDia.getText(),
+                    txtEdital.getText(), vagas, txtBanca.getText(), salario);
+            if (sucesso == true) {
+                JOptionPane.showMessageDialog(null, "O cadastro foi realizado com sucesso");
+                this.Limpa(evt);
+            } else {
+                JOptionPane.showMessageDialog(null, "Os campos não foram preenchidos corretamente");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro: " + e);
+        }
+    }
+
+    private void Limpa(ActionEvent evt) {
+        // TODO Auto-generated method stub
+
+    }
+
 }

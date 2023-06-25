@@ -8,13 +8,14 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.*;
 
-public class Telaquestao extends JFrame implements ActionListener{
+public class Telaquestao extends JFrame implements ActionListener {
 
-     private JLabel respostaLabel;
-     private JButton buttonResposta;
-    
-	 private JTextArea respostas;    
-	 public Telaquestao() {
+    private JLabel respostaLabel;
+    private JButton buttonResposta;
+
+    private JTextArea respostas;
+
+    public Telaquestao() {
         JTextArea cabecario = new JTextArea();
         cabecario.setEditable(false);
         cabecario.setOpaque(false);
@@ -26,7 +27,7 @@ public class Telaquestao extends JFrame implements ActionListener{
         cabecario.setBounds(0, 10, 300, 120);
         add(cabecario);
 
-        JTextArea  enunciado = new JTextArea();
+        JTextArea enunciado = new JTextArea();
         enunciado.setEditable(false);
         enunciado.setOpaque(false);
         enunciado.setFont(enunciado.getFont().deriveFont(Font.BOLD, 13f));
@@ -45,7 +46,7 @@ public class Telaquestao extends JFrame implements ActionListener{
                 + "d) Demitir, sem motivação, servidor estável, na hipótese de perda da confiança.");
         respostas.setBounds(0, 200, 500, 120);
         add(respostas);
-        
+
         respostaLabel = new JLabel();
         respostaLabel.setFont(respostaLabel.getFont().deriveFont(Font.BOLD, 14f));
         respostaLabel.setBounds(0, 350, 500, 30);
@@ -54,8 +55,8 @@ public class Telaquestao extends JFrame implements ActionListener{
         buttonResposta = new JButton("Resposta");
         buttonResposta.setBounds(0, 300, 500, 30);
         buttonResposta.addActionListener(new ActionListener() {
-        // metodo pra mostrar a resposta depois que aperta 
-        @Override
+            // metodo pra mostrar a resposta depois que aperta
+            @Override
             public void actionPerformed(ActionEvent e) {
                 String respostaCorreta = "c) Aplicar penalidades mediante processo administrativo disciplinar.";
 
@@ -72,15 +73,13 @@ public class Telaquestao extends JFrame implements ActionListener{
         setLayout(new FlowLayout(ABORT));
     }
 
-
     public static void main(String[] args) {
         new Telaquestao();
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 }
