@@ -7,6 +7,9 @@ codConcurso int auto_increment not null,
 nome varchar(50),
 dias varchar(14),
 edital varchar(30),
+vagas varchar(30),
+salario varchar(50),
+banca varchar(30)
 primary key (codConcurso));
 
 create table matematica(

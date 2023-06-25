@@ -22,13 +22,16 @@ public class TelaPrincipal extends JFrame {
         JMenuItem materia1 = new JMenuItem("Português");
         JMenuItem materia2 = new JMenuItem("Matemática");
         JMenuItem materia3 = new JMenuItem("Estrutura de dados");
+        JMenuItem materia4 = new JMenuItem("Todas as questões");
         
         concursosMenu.add(cadastrarItem);
         concursosMenu.add(editarItem);
         questoesMenu.add(materia1);
         questoesMenu.add(materia3);
         questoesMenu.add(materia2);
+        questoesMenu.add(materia4);
 
+        
         setJMenuBar(barraMenu);
 
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));

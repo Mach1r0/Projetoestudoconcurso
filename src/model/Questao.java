@@ -1,14 +1,20 @@
 package model;
 
-public abstract class Disciplinas {
+public abstract class Questao {
 
-    // atriby=
-    public String nomeMateria;
-    public String graudeDificuldade;
-    public String questoes;
-    public String resposta;
+    // atributos
+	protected String nomeMateria;
+    protected String graudeDificuldade;
+    protected String questoes;
+    protected String resposta;
+    protected String enunciado;
+    protected String assunto;
+    protected String concurso;
+    protected String prova;
 
-    public Disciplinas(String questoes, String resposta, String nomeMateria, String graudeDificuldade) {
+
+    
+    public Questao(String questoes, String resposta, String nomeMateria, String graudeDificuldade) {
         this.questoes = questoes;
         this.graudeDificuldade = graudeDificuldade;
         this.nomeMateria = nomeMateria;
@@ -48,7 +54,7 @@ public abstract class Disciplinas {
         this.graudeDificuldade = graudedificuldade;
     }
 
-    public static Disciplinas buscaDisciplina() {
+    public static Questao buscaDisciplina() {
         return null;
     }
 }

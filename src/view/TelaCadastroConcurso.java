@@ -1,11 +1,14 @@
 package view;
 
 import javax.swing.*;
+
+import controler.ControladoraConcurso;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CadastroConcurso extends JFrame implements ActionListener {
+public class TelaCadastroConcurso extends JFrame implements ActionListener {
 
     JLabel Titulo = new JLabel("Cadastro Concurso", SwingConstants.CENTER);
     JLabel nome = new JLabel("Nome:");
@@ -27,7 +30,7 @@ public class CadastroConcurso extends JFrame implements ActionListener {
     JButton Excluir = new JButton("Excluir");
     JButton Consultar = new JButton("Consultar");
 
-    public CadastroConcurso() {
+    public TelaCadastroConcurso() {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setSize(400, 400);
         setLayout(null);
@@ -85,13 +88,45 @@ public class CadastroConcurso extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new CadastroConcurso();
+        new TelaCadastroConcurso();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+		Object src = e.getSource();
+    	if (src == Cadastrar) {
+    		cadastrarConcurso(e);
+		}
+    }
+    public void cadastrarConcurso(java.awt.event.ActionEvent evt) {
+    	String nome = txtNome.getText();
+    	String dia = txtDia.getText();
+    	String edital = txtEdital.getText();
+    	int vagas = Integer.parseInt(txtVagas.getText());
+    	String banca = txtBanca.getText();
+    	float salario = Integer.parseInt(txtSalario.getText());
+		boolean sucesso = false; 
 
+		try {
+		ControladoraConcurso controladoraConcurso = new ControladoraConcurso();
+    	controladoraConcurso.cadastrarConcurso(nome, dia, edital, vagas, banca, salario);
+    	
+    	if(sucesso == true) {
+    		JOptionPane.showMessageDialog(null,"O cadastro foi realizado com sucesso");
+    		this.Cancelar(evt);
+    	}else {
+    		JOptionPane.showMessageDialog(null,"Os campos não foram preenchidos corretamento");
+    	}
+    }catch (Exception e) {
+    	JOptionPane.showMessageDialog(null,"Erro:" + e);
+}
     }
 
+	private void Cancelar(ActionEvent evt) {
+		// TODO Auto-generated method stub
+		
+	}
+    
+    
+    
 }

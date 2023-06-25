@@ -1,6 +1,6 @@
 package model;
 
-public class  Humanas  extends Disciplinas{
+public class Portugues extends Questao{
 	
 	private String questoesDiscursivas;
 	
@@ -12,7 +12,7 @@ public class  Humanas  extends Disciplinas{
 		this.questoesDiscursivas = questoesDiscursivas;
 	}
 
-	public Humanas(String nomeMateria, String questoes, String graudeDificuldade, String questoesDiscursivas, String resposta ) {
+	public Portugues(String nomeMateria, String questoes, String graudeDificuldade, String questoesDiscursivas, String resposta ) {
 		super(questoes, resposta, nomeMateria, graudeDificuldade);
 		this.questoesDiscursivas = questoesDiscursivas;
 	}	

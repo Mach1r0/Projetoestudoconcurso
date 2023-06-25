@@ -1,29 +1,23 @@
 package model;
 
-public class Exatas extends Disciplinas {
+public class Matematica extends Questao {
 	
-	//Atributos 
+	private Boolean  questoesBinarias;
+		
 	
-	private String questoesBinarias;
-	
-	//gets e sets 
-	
-	public String getQuestoesBinarias() {
+	public Boolean getQuestoesBinarias() {
 		return questoesBinarias;
 	}
-
-	public void setQuestoesBinarias(String questoesBinarias) {
+	
+	public void setQuestoesBinarias(Boolean questoesBinarias) {
 		this.questoesBinarias = questoesBinarias;
 	}
-
-	// construtor 
 	
-	public Exatas(String nomeMateria, String questoes, String graudeDificuldade, String questoesBinarias, String resposta) {
+	public Matematica(String nomeMateria, String questoes, String graudeDificuldade, Boolean questoesBinarias, String resposta) {
 		super(questoes, resposta, nomeMateria,  graudeDificuldade);
 		this.questoesBinarias = questoesBinarias;
 	}
 
-	/// to string 
 	@Override
 	public String toString() {
 		return "Materia exatas: " + nomeMateria + ", questoes: " + questoes
@@ -31,5 +25,6 @@ public class Exatas extends Disciplinas {
 				"questao binaria: " + questoesBinarias + ","
 		+ " reposta: " + resposta;
 	}
+
 }
 

@@ -8,14 +8,29 @@ public class Concurso {
 	private String edital;
 	private String dia;
 	private String banca;
-	private ArrayList<Disciplinas> disciplinas = new ArrayList<Disciplinas>();
+	private int vagas;
+	private float salario;
 	
-	public Concurso(String nome1, String dia1, String edital) {
+	private ArrayList<Questao> disciplinas = new ArrayList<Questao>();
+	
+	public Concurso(String nome1, String dia1, String edital1, String banca1, int vagas1, float salario1) {
 		this.nome = nome1; 
 		this.dia = dia1;
-		this.edital = edital;
+		this.edital = edital1;
+		this.vagas = vagas1;
+		this.banca = banca1;
+		this.setSalario(salario1);
+		
 	}
-
+//
+	public int getVagas() {
+		return vagas;
+	}
+	
+	public void setVagas(int vagas) {
+		this.vagas = vagas;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -40,11 +55,11 @@ public class Concurso {
 		this.edital = edital;
 	}
 
-	public ArrayList<Disciplinas> getDisciplinas() {
+	public ArrayList<Questao> getDisciplinas() {
 		return disciplinas;
 	}
 
-	public void setDisciplinas(ArrayList<Disciplinas> disciplinas) {
+	public void setDisciplinas(ArrayList<Questao> disciplinas) {
 		this.disciplinas = disciplinas;
 	}
 
@@ -60,5 +75,16 @@ public class Concurso {
 	public String toString() {
 			return "nome do concurso: " + nome + ", edital:" + edital + ", data: " + dia;
 	}
-
+	
+	public void CadastrarConcurso(Concurso concurso){
+		
+	}
+	public float getSalario() {
+		return salario;
+	}
+	public void setSalario(float salario) {
+		this.salario = salario;
+	}
+	public void cadastrarConcurso(Concurso concurso) {
+			}
 }
