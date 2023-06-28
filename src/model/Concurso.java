@@ -110,4 +110,8 @@ public class Concurso {
 
 	public void setCodConcurso(int int1) {
 	}
+
+	public void alterarConcurso(Concurso concurso) throws ExceptionDAO {
+		new ConcursoDAO().alterarConcurso(concurso);
+	}
 }

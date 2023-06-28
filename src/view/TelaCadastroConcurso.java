@@ -135,8 +135,15 @@ public class TelaCadastroConcurso extends JFrame implements ActionListener {
         boolean sucesso = true;
         try {
             ControladoraConcurso controladoraConcurso = new ControladoraConcurso();
-            sucesso = controladoraConcurso.cadastrarConcurso(txtNome.getText(), txtDia.getText(),
-                    txtEdital.getText(), vagas, txtBanca.getText(), salarioFloat);
+
+            if (this.codConcurso == 0) {
+                sucesso = controladoraConcurso.cadastrarConcurso(txtNome.getText(), txtDia.getText(),
+                        txtEdital.getText(), vagas, txtBanca.getText(), salarioFloat);
+            } else {
+                sucesso = controladoraConcurso.alterarConcurso(codConcurso, txtNome.getText(), txtDia.getText(),
+                        txtEdital.getText(), vagas, txtBanca.getText(), salarioFloat);
+            }
+
             if (sucesso == true) {
                 JOptionPane.showMessageDialog(null, "O cadastro foi realizado com sucesso");
                 this.Limpa(evt);

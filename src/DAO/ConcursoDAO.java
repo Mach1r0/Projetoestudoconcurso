@@ -81,4 +81,33 @@ public class ConcursoDAO {
         }
         return concursos;
     }
+
+    public void alterarConcurso(Concurso concurso) throws ExceptionDAO {
+        String sql = "Update  Filme set nome = ?, dia = ?, edital = ?, vagas = ?, salario = ?, banca = ? where codConcurso =  ?";
+        PreparedStatement pStatement = null;
+        Connection connection = null;
+
+        try {
+            connection = new ConnectionMVC().getConnection();
+            pStatement = connection.prepareStatement(sql);
+            pStatement.setString(1, concurso.getNome());
+            pStatement.setString(2, concurso.getDia());
+            pStatement.setString(3, concurso.getEdital());
+            pStatement.setInt(4, concurso.getVagas());
+            pStatement.setFloat(5, concurso.getSalario());
+            pStatement.setString(6, concurso.getBanca());
+            pStatement.setInt(6, concurso.getCodConcurso());
+
+        } catch (Exception e) {
+            throw new ExceptionDAO("Erro ao alterar concurso: " + e);
+        } finally {
+            try {
+                if (pStatement != null) {
+                    pStatement.close();
+                }
+            } catch (SQLException e) {
+                throw new ExceptionDAO("Erro ao fechar o Statement: " + e);
+            }
+        }
+    }
 }
