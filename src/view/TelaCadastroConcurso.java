@@ -2,11 +2,23 @@ package view;
 
 import javax.swing.*;
 
+import com.mysql.fabric.xmlrpc.base.Array;
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
+
+import DAO.ConnectionMVC;
+import DAO.ExceptionDAO;
 import controler.ControladoraConcurso;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import model.Concurso;
+import model.Questao;
+import DAO.ConnectionMVC;
 
 public class TelaCadastroConcurso extends JFrame implements ActionListener {
 
@@ -29,9 +41,10 @@ public class TelaCadastroConcurso extends JFrame implements ActionListener {
     JButton Cancelar = new JButton("Cancelar");
     JButton Excluir = new JButton("Excluir");
     JButton Consultar = new JButton("Consultar");
+    int codConcurso = 0;
 
     public TelaCadastroConcurso() {
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(400, 400);
         setLayout(null);
         setLocationRelativeTo(null);
@@ -76,6 +89,7 @@ public class TelaCadastroConcurso extends JFrame implements ActionListener {
         add(Cadastrar);
 
         Excluir.setBounds(160, 270, 100, 25);
+        Excluir.addActionListener(this);
         add(Excluir);
 
         Cancelar.setBounds(270, 270, 100, 25);
@@ -85,6 +99,16 @@ public class TelaCadastroConcurso extends JFrame implements ActionListener {
         add(Consultar);
 
         setVisible(true);
+    }
+
+    public void BuscarConcurso(Integer Codconcurso, String nome, int dia, String edital, int vagas, Float salario,
+            String banca) {
+        this.txtNome.setText(nome);
+        this.txtDia.setText(Integer.toString(dia));
+        this.txtEdital.setText(edital);
+        this.txtVagas.setText(Integer.toString(vagas));
+        this.txtSalario.setText(Float.toString(salario));
+        this.txtBanca.setText(banca);
     }
 
     public static void main(String[] args) {
@@ -97,17 +121,22 @@ public class TelaCadastroConcurso extends JFrame implements ActionListener {
         if (src == Cadastrar) {
             cadastrarbutton(e);
         }
+        if (src == Consultar) {
+
+        }
+        if (src == Cancelar) {
+            Limpa(e);
+        }
     }
 
     public void cadastrarbutton(ActionEvent evt) {
         int vagas = Integer.parseInt(txtVagas.getText().trim());
-        int salario = Integer.parseInt(txtSalario.getText().trim());
+        float salarioFloat = Float.parseFloat(String.valueOf(txtSalario.getText()));
         boolean sucesso = true;
-
         try {
             ControladoraConcurso controladoraConcurso = new ControladoraConcurso();
             sucesso = controladoraConcurso.cadastrarConcurso(txtNome.getText(), txtDia.getText(),
-                    txtEdital.getText(), vagas, txtBanca.getText(), salario);
+                    txtEdital.getText(), vagas, txtBanca.getText(), salarioFloat);
             if (sucesso == true) {
                 JOptionPane.showMessageDialog(null, "O cadastro foi realizado com sucesso");
                 this.Limpa(evt);
@@ -120,8 +149,11 @@ public class TelaCadastroConcurso extends JFrame implements ActionListener {
     }
 
     private void Limpa(ActionEvent evt) {
-        // TODO Auto-generated method stub
-
+        txtNome.setText("");
+        txtDia.setText("");
+        txtBanca.setText("");
+        txtEdital.setText("");
+        txtSalario.setText("0");
+        txtVagas.setText("0");
     }
-
 }

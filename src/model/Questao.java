@@ -3,22 +3,23 @@ package model;
 public abstract class Questao {
 
     // atributos
-	protected String nomeMateria;
+    protected String nomeMateria;
     protected String graudeDificuldade;
-    protected String questoes;
     protected String resposta;
     protected String enunciado;
     protected String assunto;
     protected String concurso;
     protected String prova;
 
-
-    
-    public Questao(String questoes, String resposta, String nomeMateria, String graudeDificuldade) {
-        this.questoes = questoes;
+    public Questao(String resposta, String nomeMateria, String graudeDificuldade, String assunto,
+            String concurso, String prova, String enunciado) {
         this.graudeDificuldade = graudeDificuldade;
         this.nomeMateria = nomeMateria;
         this.resposta = resposta;
+        this.assunto = assunto;
+        this.enunciado = enunciado;
+        this.concurso = concurso;
+        this.prova = prova;
 
     }
 
@@ -34,14 +35,6 @@ public abstract class Questao {
         return graudeDificuldade;
     }
 
-    public String getQuestoes() {
-        return questoes;
-    }
-
-    public void setQuestoes(String questoes) {
-        this.questoes = questoes;
-    }
-
     public String getResposta() {
         return resposta;
     }
@@ -55,6 +48,22 @@ public abstract class Questao {
     }
 
     public static Questao buscaDisciplina() {
+        return null;
+    }
+
+    public Object getAssunto() {
+        return null;
+    }
+
+    public Object getConcurso() {
+        return null;
+    }
+
+    public Object getProva() {
+        return null;
+    }
+
+    public Object getEnunciado() {
         return null;
     }
 }

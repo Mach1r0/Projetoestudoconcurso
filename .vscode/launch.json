@@ -6,6 +6,69 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TelaConsultaConcurso",
+            "request": "launch",
+            "mainClass": "view.TelaConsultaConcurso",
+            "projectName": "projetoEstudopraconcurso"
+        },
+        {
+            "type": "java",
+            "name": "telaConsultaConcurso",
+            "request": "launch",
+            "mainClass": "view.telaConsultaConcurso",
+            "projectName": "projetoEstudopraconcurso"
+        },
+        {
+            "type": "java",
+            "name": "TelaConsultaCanal",
+            "request": "launch",
+            "mainClass": "view.TelaConsultaCanal",
+            "projectName": "projetoEstudopraconcurso"
+        },
+        {
+            "type": "java",
+            "name": "NonEditableJTableExample",
+            "request": "launch",
+            "mainClass": "view.NonEditableJTableExample",
+            "projectName": "projetoEstudopraconcurso"
+        },
+        {
+            "type": "java",
+            "name": "Telaquestao",
+            "request": "launch",
+            "mainClass": "view.Telaquestao",
+            "projectName": "projetoEstudopraconcurso"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "model.Main",
+            "projectName": "projetoEstudopraconcurso"
+        },
+        {
+            "type": "java",
+            "name": "TelaConsultaQuestoes",
+            "request": "launch",
+            "mainClass": "view.TelaConsultaQuestoes",
+            "projectName": "projetoEstudopraconcurso"
+        },
+        {
+            "type": "java",
+            "name": "ConsultaQuestao",
+            "request": "launch",
+            "mainClass": "view.ConsultaQuestao",
+            "projectName": "projetoEstudopraconcurso"
+        },
+        {
+            "type": "java",
+            "name": "ConsultaQuestoes",
+            "request": "launch",
+            "mainClass": "view.ConsultaQuestoes",
+            "projectName": "projetoEstudopraconcurso"
+        },
+        {
+            "type": "java",
             "name": "Consultaquestao",
             "request": "launch",
             "mainClass": "view.Consultaquestao",

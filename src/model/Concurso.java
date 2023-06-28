@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import DAO.ConcursoDAO;
 import DAO.ExceptionDAO;
-import controler.ControladoraConcurso;
 
 public class Concurso {
 
@@ -14,8 +13,16 @@ public class Concurso {
 	private String banca;
 	private int vagas;
 	private float salario;
+	private int codConcurso;
+
+	public int getCodConcurso() {
+		return codConcurso;
+	}
 
 	private ArrayList<Questao> disciplinas = new ArrayList<Questao>();
+
+	public Concurso() {
+	}
 
 	public Concurso(String nome, String dia, String edital, String banca, int vagas, float salario) {
 		this.nome = nome;
@@ -94,5 +101,13 @@ public class Concurso {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public ArrayList<Concurso> listaConcursos(String nome) throws ExceptionDAO {
+		return new ConcursoDAO().listaConcurso(nome);
+
+	}
+
+	public void setCodConcurso(int int1) {
 	}
 }

@@ -5,15 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
-import java.awt.*;
-
 public class Telaquestao extends JFrame implements ActionListener {
 
     private JLabel respostaLabel;
     private JButton buttonResposta;
-
-    private JTextArea respostas;
 
     public Telaquestao() {
         JTextArea cabecario = new JTextArea();

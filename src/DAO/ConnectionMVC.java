@@ -22,4 +22,8 @@ public class ConnectionMVC {
 		return conn;
 
 	}
+
+	public com.mysql.jdbc.Connection getConnectionMVC() {
+		return null;
+	}
 }

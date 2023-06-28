@@ -1,9 +1,9 @@
 package model;
 
-public class Portugues extends Questao{
-	
+public class Portugues extends Questao {
+
 	private String questoesDiscursivas;
-	
+
 	public String getQuestoesDiscursivas() {
 		return questoesDiscursivas;
 	}
@@ -12,17 +12,19 @@ public class Portugues extends Questao{
 		this.questoesDiscursivas = questoesDiscursivas;
 	}
 
-	public Portugues(String nomeMateria, String questoes, String graudeDificuldade, String questoesDiscursivas, String resposta ) {
-		super(questoes, resposta, nomeMateria, graudeDificuldade);
+	public Portugues(String questoesDiscursivas, String resposta, String nomeMateria,
+			String graudeDificuldade, String assunto,
+			String concurso, String prova, String enunciado) {
+		super(resposta, nomeMateria, graudeDificuldade, assunto, enunciado, concurso, prova);
 		this.questoesDiscursivas = questoesDiscursivas;
-	}	
-	
-	@Override
-	public String toString() {
-			return "Materia humanas: " + nomeMateria + ", questoes:" + questoes + 
-			", grau de dificuldade: " + graudeDificuldade + ",\n" + "questao discursiva: " 
-			+ questoesDiscursivas + ", resposta:" + resposta;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Materia humanas: " + nomeMateria + ", assunto:" + assunto + ", grau de dificuldade: "
+				+ graudeDificuldade + ",\n"
+				+ "questao discursiva: "
+				+ questoesDiscursivas + ", resposta:" + resposta;
+	}
+
 }

@@ -8,9 +8,8 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		matematica = new Matematica("MD1", "1+1", "Díficil", true, "2");
-		portugues = new Portugues("Conhecimentos bancarios", "MyQLS é legal?",
-				"Díficil", "sim", "muito legal");
+		matematica = new Matematica(true, null, null, null, null, null, null, null);
+		portugues = new Portugues("Conhecimentos bancarios", null, null, null, null, null, null, null);
 		concurso = new Concurso("Banco do Brasil", "03/04/2023", "2023", null, 0, 0);
 
 		System.out.println(concurso.toString());
