@@ -37,12 +37,12 @@ public class ControladoraConcurso {
         return false;
     }
 
-    public boolean apagarConcurso(int CodConcurso) throws ExceptionDAO {
-        if (CodConcurso == 0) {
+    public boolean apagarConcurso(int codConcurso) throws ExceptionDAO {
+        if (codConcurso == 0) {
             return false;
         } else {
             Concurso concurso = new Concurso();
-            concurso.setCodConcurso(CodConcurso);
+            concurso.setCodConcurso(codConcurso);
             concurso.apagarConcurso(concurso);
             return true;    
         }

@@ -68,14 +68,14 @@ public class TelaConsultaConcurso extends JFrame implements ActionListener {
         add(buscaButton);
 
         // Configurações da tabela
+        tableModel.addColumn("codigo");
         tableModel.addColumn("Nome");
         tableModel.addColumn("Dificuldade");
         tableModel.addColumn("Resposta");
         tableModel.addColumn("Enunciado");
         tableModel.addColumn("Assunto");
-        tableModel.addColumn("Concurso");
-        tableModel.addColumn("Prova");
-
+        tableModel.addColumn("Banca");
+ 
         concursoTable = new JTable(tableModel);
         concursoTable.setRowHeight(40);
         concursoTable.getTableHeader().setFont(padraoFonte);

@@ -113,7 +113,7 @@ public class ConcursoDAO {
     }
 
     public void apagarConcurso(Concurso concurso) throws ExceptionDAO {
-        String sql = "Delete From concurso where codConcurso = ?";
+        String sql = "Delete from Concurso where codConcurso = ?";
         PreparedStatement pStatement = null;
         Connection connection = null;
 
@@ -122,21 +122,20 @@ public class ConcursoDAO {
             pStatement = connection.prepareStatement(sql);
             pStatement.setInt(1, concurso.getCodConcurso());
             pStatement.execute();
+
         } catch (SQLException e) {  
-            throw new ExceptionDAO("Erro ao deletar  concurso" + e);
+            throw new ExceptionDAO("Erro" + e);
         } finally {
             try {
-                if (pStatement != null) {
-                    pStatement.close();
-                }
-            } catch (SQLException e) {
+                if (pStatement != null) {pStatement.close();}
+            } 
+            catch (SQLException e) {
                 throw new ExceptionDAO("Erro ao fechar o Statement" + e);
             }
             try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
+                if (connection != null) {connection.close();}
+            } 
+            catch (SQLException e) {
                 throw new ExceptionDAO("Erro ao fechar a conexão:" + e);
             }
         }

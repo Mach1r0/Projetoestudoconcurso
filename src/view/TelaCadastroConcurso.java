@@ -13,6 +13,7 @@ import controler.ControladoraConcurso;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.System.Logger.Level;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
@@ -93,17 +94,17 @@ public class TelaCadastroConcurso extends JFrame implements ActionListener {
         add(Excluir);
 
         Cancelar.setBounds(270, 270, 100, 25);
+        Cancelar.addActionListener(this);
         add(Cancelar);
 
         Consultar.setBounds(50, 310, 320, 25);
         Consultar.addActionListener(this);
         add(Consultar);
-
+    
         setVisible(true);
     }
 
-    public void BuscarConcurso(Integer Codconcurso, String nome, String dia, String edital, int vagas, Float salario,
-            String banca) {
+    public void BuscarConcurso(Integer Codconcurso, String nome, String dia, String edital, int vagas, Float salario, String banca) {
         this.txtNome.setText(nome);
         this.txtDia.setText((dia));
         this.txtEdital.setText(edital);
@@ -117,19 +118,16 @@ public class TelaCadastroConcurso extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        Object src = e.getSource();
+    public void actionPerformed(ActionEvent evt) {
+        Object src = evt.getSource();
         if (src == Cadastrar) {
-            cadastrarbutton(e);
-        }
-        if (src == Consultar) {
-
+            cadastrarbutton(evt);
         }
         if (src == Cancelar) {
-            Limpa(e);
+            Limpa(evt);
         }
         if (src == Excluir) {
-            ;
+            apagarConcurso(evt);;
         }
         if (src == Consultar) {
             telaconsultaConcurso();
@@ -142,10 +140,26 @@ public class TelaCadastroConcurso extends JFrame implements ActionListener {
         telaconsultadoconcurso.setVisible(true);
     }
 
+    public void apagarConcurso(java.awt.event.ActionEvent evt) {
+         boolean sucesso = false;
+         ControladoraConcurso controladoraConcurso = new ControladoraConcurso();
+         try {
+             sucesso = controladoraConcurso.apagarConcurso(this.codConcurso);
+             if(sucesso) {
+                 JOptionPane.showMessageDialog(null,"Concurso apagado");
+                 this.Limpa(evt);
+             } else {
+                 JOptionPane.showMessageDialog(null, "Erro ao apagar Concurso");
+             }
+         } catch (ExceptionDAO ex) {
+             JOptionPane.showMessageDialog(null, "Erro " + ex);
+         }
+     }
+
     public void cadastrarbutton(ActionEvent evt) {
         int vagas = Integer.parseInt(txtVagas.getText().trim());
         float salarioFloat = Float.parseFloat(String.valueOf(txtSalario.getText()));
-        boolean sucesso = true;
+        boolean sucesso = false;
         try {
             ControladoraConcurso controladoraConcurso = new ControladoraConcurso();
 
@@ -168,23 +182,8 @@ public class TelaCadastroConcurso extends JFrame implements ActionListener {
         }
     }
 
-    private void apagarConcurso(ActionEvent evt) {
-        boolean sucesso;
-        ControladoraConcurso controladoraConcurso = new ControladoraConcurso();
-        try {
-            sucesso = controladoraConcurso.apagarConcurso(this.codConcurso);
-            if (sucesso) {
-                JOptionPane.showMessageDialog(null, "O concurso foi apagado com sucesso");
-                this.Limpa(evt);
-            } else {
-                JOptionPane.showMessageDialog(null, "Erro ao apagar concurso");
-            }
-        } catch (ExceptionDAO e) {
-            JOptionPane.showMessageDialog(null, "Erro ao apagar concurso");
-        }
-    }
 
-    private void Limpa(ActionEvent evt) {
+    public void Limpa(java.awt.event.ActionEvent evt) {
         txtNome.setText("");
         txtDia.setText("");
         txtBanca.setText("");
@@ -192,4 +191,5 @@ public class TelaCadastroConcurso extends JFrame implements ActionListener {
         txtSalario.setText("0");
         txtVagas.setText("0");
     }
+    
 }

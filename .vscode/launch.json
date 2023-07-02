@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TelaQuestaomat",
+            "request": "launch",
+            "mainClass": "view.TelaQuestaomat",
+            "projectName": "projetoEstudopraconcurso"
+        },
+        {
+            "type": "java",
             "name": "TelaQuestao",
             "request": "launch",
             "mainClass": "view.TelaQuestao",

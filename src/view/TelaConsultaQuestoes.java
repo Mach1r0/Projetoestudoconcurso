@@ -63,6 +63,11 @@ public class TelaConsultaQuestoes extends JFrame implements ActionListener {
         tableModel.addColumn("Assunto");
         tableModel.addColumn("Concurso");
         tableModel.addColumn("Prova");
+        tableModel.addColumn("Enunciado");
+        tableModel.addColumn("Grau de dificuldade");
+        tableModel.addColumn("resposta");
+        tableModel.addColumn("Binaria");
+        tableModel.addColumn("Discussiva");
 
         concursoTable = new JTable(tableModel);
         concursoTable.setRowHeight(40);
@@ -71,7 +76,7 @@ public class TelaConsultaQuestoes extends JFrame implements ActionListener {
         concursoTable.setBackground(new Color(220, 220, 220));
 
         // Configurações do painel da tabela
-        tabelaPanel.setBounds(100, 100, 760, 350);
+        tabelaPanel.setBounds(30, 100, 850, 350);
         tabelaPanel.setFont(padraoFonte);
         tabelaPanel.add(new JScrollPane(concursoTable));
         add(tabelaPanel);
@@ -94,9 +99,14 @@ public class TelaConsultaQuestoes extends JFrame implements ActionListener {
                     String assunto = (String) tableModel.getValueAt(rowIndex, 1);
                     String concurso = (String) tableModel.getValueAt(rowIndex, 2);
                     String prova = (String) tableModel.getValueAt(rowIndex, 3);
-
+                    String graudedificuldade = (String) tableModel.getValueAt(rowIndex, 4);
+                    String resposta = (String) tableModel.getValueAt(rowIndex, 5);
+                    String binariaStr = (String) tableModel.getValueAt(rowIndex, 6);
+                    boolean binaria = Boolean.parseBoolean(binariaStr);
+                    String discussiva= (String) tableModel.getValueAt(rowIndex, 7);
                     // Exibe a nova tela de questão
-                    exibirTelaQuestao(nomeMateria, assunto, concurso, prova);
+                    exibirTelaQuestao(nomeMateria, assunto, concurso, prova, graudedificuldade, 
+                    resposta, resposta, binaria,discussiva);
                 }
             }
         });
@@ -107,50 +117,67 @@ public class TelaConsultaQuestoes extends JFrame implements ActionListener {
 
     public void adicionaPortugues(Portugues portugues) {
         listaportugues.add(portugues);
-        String[] rowData = {
-            portugues.getNomeMateria(),
-            portugues.getAssunto(),
-            portugues.getConcurso(),
-            portugues.getProva()
+        String[] rowportugues = {
+                portugues.getNomeMateria(),
+                portugues.getAssunto(),
+                portugues.getConcurso(),
+                portugues.getProva(),
+                portugues.getGraudedificuldade(),
+                portugues.getResposta(),
+                portugues.getQuestoesDiscursivas(),
+                portugues.getEnunciado(),
         };
-        tableModel.addRow(rowData);
+        tableModel.addRow(rowportugues);
     }
 
     public void adicionaMatematica(Matematica matematica) {
         listamatematica.add(matematica);
-        String[] rowData = {
-            matematica.getNomeMateria(),
-            matematica.getAssunto(),
-            matematica.getConcurso(),
-            matematica.getProva()
+        String[] rowmatematica = {
+                matematica.getNomeMateria(),
+                matematica.getAssunto(),
+                matematica.getConcurso(),
+                matematica.getProva(),
+                matematica.getGraudedificuldade(),
+                matematica.getResposta(),
+                String.valueOf(matematica.getQuestoesBinarias()),
+                matematica.getEnunciado(),
         };
-        tableModel.addRow(rowData);
+        tableModel.addRow(rowmatematica);
     }
 
-    public void buscarMatematica(String termo) {
+        public void buscarMatematica(String termo) {
         for (Matematica matematica : listamatematica) {
             if (matematica.getNomeMateria().contains(termo)) {
-                String[] rowData = {
+                String[] rowmatematica = {
                     matematica.getNomeMateria(),
                     matematica.getAssunto(),
                     matematica.getConcurso(),
-                    matematica.getProva()
+                    matematica.getProva(),
+                    matematica.getGraudedificuldade(),
+                    matematica.getResposta(),
+                    matematica.getEnunciado(),
+                    String.valueOf(matematica.getQuestoesBinarias())
                 };
-                tableModel.addRow(rowData);
+                tableModel.addRow(rowmatematica);
             }
         }
     }
 
+
     public void buscarPortugues(String termo) {
         for (Portugues portugues : listaportugues) {
             if (portugues.getNomeMateria().contains(termo)) {
-                String[] rowData = {
+                String[] rowportugues = {
                     portugues.getNomeMateria(),
                     portugues.getAssunto(),
                     portugues.getConcurso(),
-                    portugues.getProva()
+                    portugues.getProva(),
+                    portugues.getGraudedificuldade(),
+                    portugues.getResposta(),
+                    portugues.getQuestoesDiscursivas(),
+                    portugues.getEnunciado(),
                 };
-                tableModel.addRow(rowData);
+                tableModel.addRow(rowportugues);
             }
         }
     }
@@ -164,16 +191,22 @@ public class TelaConsultaQuestoes extends JFrame implements ActionListener {
         }
     }
 
-    public void exibirTelaQuestao(String nomeMateria, String assunto, String concurso, String prova) {
-        // Crie e exiba a nova tela de questão
-        TelaQuestao telaQuestao = new TelaQuestao(nomeMateria, assunto, concurso, null, null, null, null);
+
+    public void exibirTelaQuestao(String nomeMateria, String assunto, String concurso, String prova, 
+    String Enunciado, String resposta, String graudedificuldade, boolean binaria, String discussiva) {
+        
+        TelaQuestao telaQuestao = new TelaQuestao(nomeMateria, assunto, concurso, resposta,
+        graudedificuldade,Enunciado,prova, binaria, discussiva);
         telaQuestao.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        TelaConsultaQuestoes tela1 = new TelaConsultaQuestoes();
-        tela1.tela();
-        tela1.adicionaPortugues(new Portugues("portugues", "Fácil", "Portugues", "Facil", "Titulo", "Enunciado", "Resposta", "Assunto"));
-        tela1.adicionaMatematica(new Matematica("Matematica", "Multiplicação", "Ministerio Fazenda", "Ministerio Fazenda", true, "Resposta", "title", "title"));
+   public static void main(String[] args) {
+    TelaConsultaQuestoes tela1 = new TelaConsultaQuestoes();
+    tela1.tela();
+    tela1.adicionaPortugues(new Portugues("portugues", "Fácil", "Portugues", "Facil", "Titulo", 
+    "Enunciado", "Resposta", "Assunto"));
+    tela1.adicionaMatematica(new Matematica("Matematica", "Multiplicação", 
+    "Ministerio Fazenda", "Ministerio Fazenda", true, "Resposta", "title", "title"));
+
     }
 }

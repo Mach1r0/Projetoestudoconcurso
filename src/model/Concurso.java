@@ -14,16 +14,14 @@ public class Concurso {
 	private int vagas;
 	private float salario;
 	private int codConcurso;
-
-	public int getCodConcurso() {
-		return codConcurso;
-	}
-
+	
+	
+	
 	private ArrayList<Questao> disciplinas = new ArrayList<Questao>();
-
+	
 	public Concurso() {
 	}
-
+	
 	public Concurso(String nome, String dia, String edital, String banca, int vagas, float salario) {
 		this.nome = nome;
 		this.dia = dia;
@@ -32,8 +30,16 @@ public class Concurso {
 		this.banca = banca;
 		this.salario = salario;
 	}
-
+	
 	//
+	public void setCodConcurso(int codConcurso) {
+		this.codConcurso = codConcurso;
+	}
+
+	public int getCodConcurso() {
+		return codConcurso;
+	}
+	
 	public int getVagas() {
 		return vagas;
 	}
@@ -108,8 +114,6 @@ public class Concurso {
 
 	}
 
-	public void setCodConcurso(int int1) {
-	}
 
 	public void alterarConcurso(Concurso concurso) throws ExceptionDAO {
 		new ConcursoDAO().alterarConcurso(concurso);

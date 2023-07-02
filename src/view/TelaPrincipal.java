@@ -73,12 +73,14 @@ public class TelaPrincipal extends JFrame {
     }
     
     public void exibirtelaquestaoPortugues(){
-        TelaQuestao telaquestao = new TelaQuestao("null", "null", "null", "null", "null", "null", "null");
+        TelaQuestao telaquestao = new TelaQuestao("null", "null", "null", "null", "null", 
+        "null", "null", null, null);
         telaquestao.setLocationRelativeTo(null);
         telaquestao.setVisible(true);
     }
     public void exibirtelaquestaoMatematica(){
-        TelaQuestao telaquestao1 = new TelaQuestao("null", "null", "null", "null", "null", "null", "null");
+        TelaQuestao telaquestao1 = new TelaQuestao("null", "null", "null", "null", 
+        "null", "null", "null", null, null);
         telaquestao1.setLocationRelativeTo(null);
         telaquestao1.setVisible(true);
     }
@@ -97,6 +99,6 @@ public class TelaPrincipal extends JFrame {
     public void telaconsultaQuestao() {
         TelaConsultaQuestoes telaconsulta = new TelaConsultaQuestoes ();
         telaconsulta.setLocationRelativeTo(null);
-        telaconsulta.setVisible(true);
+        telaconsulta.tela();
     }
 }
