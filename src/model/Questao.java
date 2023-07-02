@@ -11,8 +11,8 @@ public abstract class Questao {
     protected String concurso;
     protected String prova;
 
-    public Questao(String resposta, String nomeMateria, String graudeDificuldade, String assunto,
-            String concurso, String prova, String enunciado) {
+    public Questao(String nomeMateria,  String assunto,  String concurso, String prova,
+     String resposta,  String graudeDificuldade, String enunciado) {
         this.graudeDificuldade = graudeDificuldade;
         this.nomeMateria = nomeMateria;
         this.resposta = resposta;
@@ -20,9 +20,8 @@ public abstract class Questao {
         this.enunciado = enunciado;
         this.concurso = concurso;
         this.prova = prova;
-
     }
-
+    
     public String getNomeMateria() {
         return nomeMateria;
     }
@@ -51,19 +50,19 @@ public abstract class Questao {
         return null;
     }
 
-    public Object getAssunto() {
+    public String getAssunto() {
         return null;
     }
 
-    public Object getConcurso() {
+    public String getConcurso() {
         return null;
     }
 
-    public Object getProva() {
+    public String getProva() {
         return null;
     }
 
-    public Object getEnunciado() {
+    public String getEnunciado() {
         return null;
     }
 }

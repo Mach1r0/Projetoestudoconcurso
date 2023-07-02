@@ -146,7 +146,7 @@ public class TelaConsultaConcurso extends JFrame implements ActionListener {
             Float salario = (Float) tableModel.getValueAt(selectedRow, 5);
             String banca = (String) tableModel.getValueAt(selectedRow, 6);
 
-            this.telaCadastroConcurso.BuscarConcurso(codConcurso, nome, selectedRow, edital, selectedRow, salario,
+            this.telaCadastroConcurso.BuscarConcurso(codConcurso, nome, dia, edital, vagas, salario,
                     banca);
             this.telaCadastroConcurso.setVisible(true);
             this.dispose();

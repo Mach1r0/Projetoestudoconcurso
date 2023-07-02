@@ -83,7 +83,7 @@ public class ConcursoDAO {
     }
 
     public void alterarConcurso(Concurso concurso) throws ExceptionDAO {
-        String sql = "Update  Filme set nome = ?, dia = ?, edital = ?, vagas = ?, salario = ?, banca = ? where codConcurso =  ?";
+        String sql = "Update  Concurso set nome = ?, dia = ?, edital = ?, vagas = ?, salario = ?, banca = ? where codConcurso = ?";
         PreparedStatement pStatement = null;
         Connection connection = null;
 
@@ -96,7 +96,8 @@ public class ConcursoDAO {
             pStatement.setInt(4, concurso.getVagas());
             pStatement.setFloat(5, concurso.getSalario());
             pStatement.setString(6, concurso.getBanca());
-            pStatement.setInt(6, concurso.getCodConcurso());
+            pStatement.setInt(7, concurso.getCodConcurso());
+            pStatement.execute();
 
         } catch (Exception e) {
             throw new ExceptionDAO("Erro ao alterar concurso: " + e);
@@ -109,5 +110,36 @@ public class ConcursoDAO {
                 throw new ExceptionDAO("Erro ao fechar o Statement: " + e);
             }
         }
+    }
+
+    public void apagarConcurso(Concurso concurso) throws ExceptionDAO {
+        String sql = "Delete From concurso where codConcurso = ?";
+        PreparedStatement pStatement = null;
+        Connection connection = null;
+
+        try {
+            connection = new ConnectionMVC().getConnection();
+            pStatement = connection.prepareStatement(sql);
+            pStatement.setInt(1, concurso.getCodConcurso());
+            pStatement.execute();
+        } catch (SQLException e) {  
+            throw new ExceptionDAO("Erro ao deletar  concurso" + e);
+        } finally {
+            try {
+                if (pStatement != null) {
+                    pStatement.close();
+                }
+            } catch (SQLException e) {
+                throw new ExceptionDAO("Erro ao fechar o Statement" + e);
+            }
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                throw new ExceptionDAO("Erro ao fechar a conexão:" + e);
+            }
+        }
+
     }
 }

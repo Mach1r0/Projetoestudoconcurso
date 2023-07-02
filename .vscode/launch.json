@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "text",
+            "request": "launch",
+            "mainClass": "view.text",
+            "projectName": "projetoEstudopraconcurso"
+        },
+        {
+            "type": "java",
+            "name": "TelaPrincipal",
+            "request": "launch",
+            "mainClass": "view.TelaPrincipal",
+            "projectName": "projetoEstudopraconcurso"
+        },
+        {
+            "type": "java",
             "name": "TelaConsultaConcurso",
             "request": "launch",
             "mainClass": "view.TelaConsultaConcurso",

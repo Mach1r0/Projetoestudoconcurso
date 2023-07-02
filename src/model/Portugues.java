@@ -12,11 +12,12 @@ public class Portugues extends Questao {
 		this.questoesDiscursivas = questoesDiscursivas;
 	}
 
-	public Portugues(String questoesDiscursivas, String resposta, String nomeMateria,
-			String graudeDificuldade, String assunto,
-			String concurso, String prova, String enunciado) {
-		super(resposta, nomeMateria, graudeDificuldade, assunto, enunciado, concurso, prova);
-		this.questoesDiscursivas = questoesDiscursivas;
+	public Portugues( String nomeMateria, String assunto, String concurso,
+			String prova, String discursiva, String resposta, 
+			String graudeDificuldade, 
+			  String enunciado) {
+		super(nomeMateria, assunto,concurso, prova, resposta, graudeDificuldade, enunciado);
+		this.questoesDiscursivas = discursiva;
 	}
 
 	@Override

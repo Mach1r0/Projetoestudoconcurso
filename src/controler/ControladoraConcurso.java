@@ -25,8 +25,7 @@ public class ControladoraConcurso {
     }
 
     public boolean alterarConcurso(int codConcurso, String nome, String dia, String edital, int vagas, String banca,
-            float salario)
-            throws ExceptionDAO {
+            float salario) throws ExceptionDAO {
         if (nome != null && nome.length() > 0 && dia != null && dia.length() > 0 && edital != null
                 && edital.length() > 0 && banca != null && banca.length() > 0 && salario >= 0 && vagas >= 0) {
             Concurso concurso = new Concurso(nome, dia, edital, banca, vagas, salario);
@@ -36,5 +35,16 @@ public class ControladoraConcurso {
         }
 
         return false;
+    }
+
+    public boolean apagarConcurso(int CodConcurso) throws ExceptionDAO {
+        if (CodConcurso == 0) {
+            return false;
+        } else {
+            Concurso concurso = new Concurso();
+            concurso.setCodConcurso(CodConcurso);
+            concurso.apagarConcurso(concurso);
+            return true;    
+        }
     }
 }

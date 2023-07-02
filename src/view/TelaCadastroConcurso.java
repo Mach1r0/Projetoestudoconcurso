@@ -41,7 +41,7 @@ public class TelaCadastroConcurso extends JFrame implements ActionListener {
     JButton Cancelar = new JButton("Cancelar");
     JButton Excluir = new JButton("Excluir");
     JButton Consultar = new JButton("Consultar");
-    int codConcurso = 0;
+    private int codConcurso = 0;
 
     public TelaCadastroConcurso() {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -101,10 +101,10 @@ public class TelaCadastroConcurso extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    public void BuscarConcurso(Integer Codconcurso, String nome, int dia, String edital, int vagas, Float salario,
+    public void BuscarConcurso(Integer Codconcurso, String nome, String dia, String edital, int vagas, Float salario,
             String banca) {
         this.txtNome.setText(nome);
-        this.txtDia.setText(Integer.toString(dia));
+        this.txtDia.setText((dia));
         this.txtEdital.setText(edital);
         this.txtVagas.setText(Integer.toString(vagas));
         this.txtSalario.setText(Float.toString(salario));
@@ -126,6 +126,13 @@ public class TelaCadastroConcurso extends JFrame implements ActionListener {
         }
         if (src == Cancelar) {
             Limpa(e);
+        }
+        if (src == Excluir) {
+            apagarConcurso(e);
+        }
+        if (src == Consultar) {
+            TelaConsultaConcurso tela = new TelaConsultaConcurso();
+            tela.setVisible(true);
         }
     }
 
@@ -152,6 +159,22 @@ public class TelaCadastroConcurso extends JFrame implements ActionListener {
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro: " + e);
+        }
+    }
+
+    private void apagarConcurso(ActionEvent evt) {
+        boolean sucesso;
+        ControladoraConcurso controladoraConcurso = new ControladoraConcurso();
+        try {
+            sucesso = controladoraConcurso.apagarConcurso(this.codConcurso);
+            if (sucesso) {
+                JOptionPane.showMessageDialog(null, "O concurso foi apagado com sucesso");
+                this.Limpa(evt);
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao apagar concurso");
+            }
+        } catch (ExceptionDAO e) {
+            JOptionPane.showMessageDialog(null, "Erro ao apagar concurso");
         }
     }
 

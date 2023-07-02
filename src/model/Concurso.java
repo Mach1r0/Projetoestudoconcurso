@@ -114,4 +114,8 @@ public class Concurso {
 	public void alterarConcurso(Concurso concurso) throws ExceptionDAO {
 		new ConcursoDAO().alterarConcurso(concurso);
 	}
+
+	public void apagarConcurso(Concurso concurso) throws ExceptionDAO {
+		new ConcursoDAO().apagarConcurso(concurso);
+	}
 }

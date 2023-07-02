@@ -12,8 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import model.Matematica;
 import model.Portugues;
 
-public class TelaConsultaQuestoes extends JFrame implements ActionListener {
-
+public class text extends JFrame implements ActionListener {
     private JLabel buscaLabel = new JLabel("Digite a Questao:");
     private JTextField buscaTextField = new JTextField();
     private JButton buscaButton = new JButton("Buscar");
@@ -21,8 +20,6 @@ public class TelaConsultaQuestoes extends JFrame implements ActionListener {
     private Font padraoFonte = new Font("Bodoni MT Condensed", Font.PLAIN, 24);
     private JPanel consultaPanel = new JPanel(null);
     private JPanel tabelaPanel = new JPanel(new GridLayout());
-    private ArrayList<Portugues> listaportugues = new ArrayList<>(); // Lista de questões de Portugues
-    private ArrayList<Matematica> listamatematica = new ArrayList<>(); // Lista de questões
 
     private DefaultTableModel tableModel = new DefaultTableModel() {
         @Override
@@ -30,6 +27,8 @@ public class TelaConsultaQuestoes extends JFrame implements ActionListener {
             return false;
         }
     };
+
+    private ArrayList<Matematica> listamatematica = new ArrayList<>(); // Lista de questões
 
     public void tela() {
         // Configurações da janela
@@ -58,6 +57,9 @@ public class TelaConsultaQuestoes extends JFrame implements ActionListener {
 
         // Configurações da tabela
         tableModel.addColumn("Nome");
+        tableModel.addColumn("Dificuldade");
+        tableModel.addColumn("Resposta");
+        tableModel.addColumn("Enunciado");
         tableModel.addColumn("Assunto");
         tableModel.addColumn("Concurso");
         tableModel.addColumn("Prova");
@@ -87,88 +89,53 @@ public class TelaConsultaQuestoes extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-       public void adicionaPortugues(Portugues portugues) {
-        listaportugues.add(portugues);
+    public void adicionaMatematica(Matematica Matematica) {
+        listamatematica.add(Matematica);
         String[] rowData = {
-                portugues.getNomeMateria(),
-                portugues.getAssunto(),
-                portugues.getConcurso(),
-                portugues.getProva(),
-                portugues.getGraudedificuldade(),
-                portugues.getQuestoesDiscursivas(),
-                portugues.getEnunciado(),
-                portugues.getResposta()
+            (String) Matematica.getNomeMateria(),
+            (String) Matematica.getGraudedificuldade(),
+            (String) Matematica.getResposta(),
+            (String) Matematica.getEnunciado(),
+            (String) Matematica.getAssunto(),
+            (String) Matematica.getConcurso(),
+            (String) Matematica.getProva()
         };
         tableModel.addRow(rowData);
     }
 
-    public void adicionaMatematica(Matematica matematica) {
-        listamatematica.add(matematica);
-        String[] rowData = {
-            matematica.getNomeMateria(),
-            matematica.getAssunto(),
-            matematica.getConcurso(),
-            matematica.getProva(),
-            matematica.getGraudedificuldade(),
-            matematica.getEnunciado(),
-            matematica.getResposta()
-        };
-        tableModel.addRow(rowData);
+    public void buscarMatematica(String termo) {
+        tableModel.setRowCount(0); // Limpa as linhas da tabela
+        for (Matematica matematica : listamatematica ) {
+            if (matematica.getNomeMateria().contains(termo)) {
+                String[] rowData = {
+                    (String) matematica.getNomeMateria(),
+                    (String) matematica.getGraudedificuldade(),
+                    (String) matematica.getResposta(),
+                    (String) matematica.getEnunciado(),
+                    (String) matematica.getAssunto(),
+                    (String) matematica.getConcurso(),
+                    (String)matematica.getProva()
+
+                };
+                tableModel.addRow(rowData);
+            }
+        }
     }
 
-        public void buscarMatematica(String termo) {
-            for (Matematica matematica : listamatematica) {
-                if (matematica.getNomeMateria().contains(termo)) {
-                    String[] rowData = {
-                        matematica.getNomeMateria(),
-                        matematica.getAssunto(),
-                        matematica.getConcurso(),
-                        matematica.getProva(),
-                        matematica.getGraudedificuldade(),
-                        matematica.getEnunciado(),
-                        matematica.getResposta()
-                    };
-                    tableModel.addRow(rowData);
-                }
-            }
-        }
-
-        public void buscarPortugues(String termo) {
-            for (Portugues portugues : listaportugues) {
-                if (portugues.getNomeMateria().contains(termo)) {
-                    String[] rowData = {
-                    portugues.getNomeMateria(),
-                    portugues.getAssunto(),
-                    portugues.getConcurso(),
-                    portugues.getProva(),
-                    portugues.getGraudedificuldade(),
-                    portugues.getQuestoesDiscursivas(),
-                    portugues.getEnunciado(),
-                    portugues.getResposta()
-                    };
-                    tableModel.addRow(rowData);
-                }
-            }
-        }
-
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == buscaButton) {
             String termo = buscaTextField.getText();
-            tableModel.setRowCount(0); // Limpar todas as linhas antes de realizar a busca
-            buscarPortugues(termo);
             buscarMatematica(termo);
         }
     }
 
-   public static void main(String[] args) {
-    TelaConsultaQuestoes tela1 = new TelaConsultaQuestoes();
-    tela1.tela();
-    tela1.adicionaPortugues(new Portugues("portugues", "Fácil", "Portugues", "Facil", null, null, null, null));
-    tela1.adicionaMatematica(new Matematica("Matematica", "Multiplicação", "Ministerio Fazenda", "Ministerio Fazenda", null, 
-    null, null, null));
-}
+    public static void main(String[] args) {
+        text tela1 = new text();
+        tela1.tela();
 
+    //    tela1.adicionaPortugues(new Portugues("portugues", "Fácil", "Portugues", "Facil", null, null, null, null));
+         tela1.adicionaMatematica(new Matematica("Matematica", "Multiplicação", "Ministerio Fazenda", "Ministerio Fazenda", null, null, null, null));
 
-
-
+    }
 }

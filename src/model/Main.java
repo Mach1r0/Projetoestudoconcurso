@@ -8,7 +8,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		matematica = new Matematica(true, null, null, null, null, null, null, null);
+		matematica = new Matematica("true", "null", null, null, true, null, null, null);
 		portugues = new Portugues("Conhecimentos bancarios", null, null, null, null, null, null, null);
 		concurso = new Concurso("Banco do Brasil", "03/04/2023", "2023", null, 0, 0);
 

@@ -4,11 +4,13 @@ public class Matematica extends Questao {
 
 	private Boolean questoesBinarias;
 
-	public Matematica(Boolean questoesBinarias, String resposta, String nomeMateria,
-			String graudeDificuldade, String assunto,
-			String concurso, String prova, String enunciado) {
+	public Matematica(String nomeMateria,String assunto,
+			String concurso, String prova, 
+			Boolean questoesBinarias, String resposta, 
+			String graudeDificuldade,
+			String enunciado) {
 
-		super(resposta, nomeMateria, graudeDificuldade, assunto, enunciado, concurso, prova);
+		super(nomeMateria, assunto,concurso, prova, resposta, graudeDificuldade, enunciado);
 		this.questoesBinarias = questoesBinarias;
 	}
 
