@@ -1,80 +1,97 @@
 package view;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Telaquestao extends JFrame implements ActionListener {
+import javax.swing.*;
 
+public class TelaQuestao extends JFrame implements ActionListener {
+    private JLabel tituloLabel;
+    private JLabel enunciadoLabel;
+    private JLabel grauDificuldadeLabel;
     private JLabel respostaLabel;
-    private JButton buttonResposta;
+    private JLabel assuntoLabel;
+    private JLabel concursoLabel;
+    private JLabel provaLabel;
+    private JButton respostaButton;
 
-    public Telaquestao() {
-        JTextArea cabecario = new JTextArea();
-        cabecario.setEditable(false);
-        cabecario.setOpaque(false);
-        cabecario.setFont(cabecario.getFont().deriveFont(12f));
-        cabecario.setText("Q01 - CEBRASPE - 2022 DF-BRASILIA - PROFESSOR UNB\n"
-                + "Prova: UNB - 2022\n"
-                + "Disciplina: Matematica, Assunto: Multiplicação\n"
-                + "Díficuldade: Fácil Binaria: Sim\n");
-        cabecario.setBounds(0, 10, 300, 120);
-        add(cabecario);
+    public TelaQuestao(String nomeMateria, String enunciado, String grauDificuldade, String resposta, String assunto, String concurso, String prova) {
+        setTitle(nomeMateria);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
 
-        JTextArea enunciado = new JTextArea();
-        enunciado.setEditable(false);
-        enunciado.setOpaque(false);
-        enunciado.setFont(enunciado.getFont().deriveFont(Font.BOLD, 13f));
-        enunciado.setText("O poder disciplinar inclui a seguinte prerrogativa do agente público \n"
-                + "competente para exercê-lo:\r\n");
-        enunciado.setBounds(0, 85, 500, 120);
-        add(enunciado);
+        JPanel questaoPanel = new JPanel();
+        questaoPanel.setLayout(new BoxLayout(questaoPanel, BoxLayout.Y_AXIS));
 
-        JTextArea respostas = new JTextArea();
-        respostas.setEditable(false);
-        respostas.setOpaque(false);
-        respostas.setFont(respostas.getFont().deriveFont(14f));
-        respostas.setText("a) Aplicação de advertência ou suspensão ao servidor sem defesa prévia.\n"
-                + "b) Aplicação de penalidade administrativa aos contratados da Administração Pública, ainda que não prevista em Lei.\n"
-                + "c) Aplicar penalidades mediante processo administrativo disciplinar.\n"
-                + "d) Demitir, sem motivação, servidor estável, na hipótese de perda da confiança.");
-        respostas.setBounds(0, 200, 500, 120);
-        add(respostas);
+        tituloLabel = new JLabel(nomeMateria);
+        tituloLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        tituloLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        questaoPanel.add(tituloLabel);
 
-        respostaLabel = new JLabel();
-        respostaLabel.setFont(respostaLabel.getFont().deriveFont(Font.BOLD, 14f));
-        respostaLabel.setBounds(0, 350, 500, 30);
-        add(respostaLabel);
+        enunciadoLabel = new JLabel(enunciado);
+        enunciadoLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        enunciadoLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        questaoPanel.add(enunciadoLabel);
 
-        buttonResposta = new JButton("Resposta");
-        buttonResposta.setBounds(0, 300, 500, 30);
-        buttonResposta.addActionListener(new ActionListener() {
-            // metodo pra mostrar a resposta depois que aperta
+        JPanel informacoesPanel = new JPanel(new GridLayout(4, 2));
+        informacoesPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        grauDificuldadeLabel = new JLabel("Grau de Dificuldade: " + grauDificuldade);
+        informacoesPanel.add(grauDificuldadeLabel);
+
+        assuntoLabel = new JLabel("Assunto: " + assunto);
+        informacoesPanel.add(assuntoLabel);
+
+        concursoLabel = new JLabel("Concurso: " + concurso);
+        informacoesPanel.add(concursoLabel);
+
+        provaLabel = new JLabel("Prova: " + prova);
+        informacoesPanel.add(provaLabel);
+
+        respostaLabel = new JLabel("Resposta: ");
+        informacoesPanel.add(respostaLabel);
+
+        questaoPanel.add(informacoesPanel);
+
+        respostaButton = new JButton("Mostrar Resposta");
+        respostaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String respostaCorreta = "c) Aplicar penalidades mediante processo administrativo disciplinar.";
-
-                // Exibe a resposta correta
-                respostaLabel.setText(respostaCorreta);
+                 respostaLabel.setText("Resposta: " + resposta);
+                respostaButton.setEnabled(false);
             }
         });
-        add(buttonResposta);
 
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(respostaButton);
+        questaoPanel.add(buttonPanel);
+
+        add(questaoPanel, BorderLayout.CENTER);
+
+        pack();
         setVisible(true);
-        setSize(600, 500);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new FlowLayout(ABORT));
     }
 
     public static void main(String[] args) {
-        new Telaquestao();
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                String nomeMateria = "Português";
+                String enunciado = "Qual é a capital do Brasil?";
+                String grauDificuldade = "Fácil";
+                String resposta = "Brasília";
+                String assunto = "Capitais";
+                String concurso = "ENEM";
+                String prova = "2022 CEBRASPE";
+
+                TelaQuestao telaQuestao = new TelaQuestao(nomeMateria, enunciado, grauDificuldade, resposta, assunto, concurso, prova);
+            }
+        });
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-
+        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
     }
 }

@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -83,21 +85,33 @@ public class TelaConsultaQuestoes extends JFrame implements ActionListener {
         consultaPanel.add(buscaButton);
         add(consultaPanel);
 
+        concursoTable.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) { // Verifica se foi um duplo clique
+                    int rowIndex = concursoTable.getSelectedRow(); // Obtém o índice da linha selecionada
+                    // Obtém os valores da linha selecionada
+                    String nomeMateria = (String) tableModel.getValueAt(rowIndex, 0);
+                    String assunto = (String) tableModel.getValueAt(rowIndex, 1);
+                    String concurso = (String) tableModel.getValueAt(rowIndex, 2);
+                    String prova = (String) tableModel.getValueAt(rowIndex, 3);
+
+                    // Exibe a nova tela de questão
+                    exibirTelaQuestao(nomeMateria, assunto, concurso, prova);
+                }
+            }
+        });
+
         // Exibe a janela
         setVisible(true);
     }
 
-       public void adicionaPortugues(Portugues portugues) {
+    public void adicionaPortugues(Portugues portugues) {
         listaportugues.add(portugues);
         String[] rowData = {
-                portugues.getNomeMateria(),
-                portugues.getAssunto(),
-                portugues.getConcurso(),
-                portugues.getProva(),
-                portugues.getGraudedificuldade(),
-                portugues.getQuestoesDiscursivas(),
-                portugues.getEnunciado(),
-                portugues.getResposta()
+            portugues.getNomeMateria(),
+            portugues.getAssunto(),
+            portugues.getConcurso(),
+            portugues.getProva()
         };
         tableModel.addRow(rowData);
     }
@@ -108,48 +122,38 @@ public class TelaConsultaQuestoes extends JFrame implements ActionListener {
             matematica.getNomeMateria(),
             matematica.getAssunto(),
             matematica.getConcurso(),
-            matematica.getProva(),
-            matematica.getGraudedificuldade(),
-            matematica.getEnunciado(),
-            matematica.getResposta()
+            matematica.getProva()
         };
         tableModel.addRow(rowData);
     }
 
-        public void buscarMatematica(String termo) {
-            for (Matematica matematica : listamatematica) {
-                if (matematica.getNomeMateria().contains(termo)) {
-                    String[] rowData = {
-                        matematica.getNomeMateria(),
-                        matematica.getAssunto(),
-                        matematica.getConcurso(),
-                        matematica.getProva(),
-                        matematica.getGraudedificuldade(),
-                        matematica.getEnunciado(),
-                        matematica.getResposta()
-                    };
-                    tableModel.addRow(rowData);
-                }
+    public void buscarMatematica(String termo) {
+        for (Matematica matematica : listamatematica) {
+            if (matematica.getNomeMateria().contains(termo)) {
+                String[] rowData = {
+                    matematica.getNomeMateria(),
+                    matematica.getAssunto(),
+                    matematica.getConcurso(),
+                    matematica.getProva()
+                };
+                tableModel.addRow(rowData);
             }
         }
+    }
 
-        public void buscarPortugues(String termo) {
-            for (Portugues portugues : listaportugues) {
-                if (portugues.getNomeMateria().contains(termo)) {
-                    String[] rowData = {
+    public void buscarPortugues(String termo) {
+        for (Portugues portugues : listaportugues) {
+            if (portugues.getNomeMateria().contains(termo)) {
+                String[] rowData = {
                     portugues.getNomeMateria(),
                     portugues.getAssunto(),
                     portugues.getConcurso(),
-                    portugues.getProva(),
-                    portugues.getGraudedificuldade(),
-                    portugues.getQuestoesDiscursivas(),
-                    portugues.getEnunciado(),
-                    portugues.getResposta()
-                    };
-                    tableModel.addRow(rowData);
-                }
+                    portugues.getProva()
+                };
+                tableModel.addRow(rowData);
             }
         }
+    }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == buscaButton) {
@@ -160,15 +164,16 @@ public class TelaConsultaQuestoes extends JFrame implements ActionListener {
         }
     }
 
-   public static void main(String[] args) {
-    TelaConsultaQuestoes tela1 = new TelaConsultaQuestoes();
-    tela1.tela();
-    tela1.adicionaPortugues(new Portugues("portugues", "Fácil", "Portugues", "Facil", null, null, null, null));
-    tela1.adicionaMatematica(new Matematica("Matematica", "Multiplicação", "Ministerio Fazenda", "Ministerio Fazenda", null, 
-    null, null, null));
-}
+    public void exibirTelaQuestao(String nomeMateria, String assunto, String concurso, String prova) {
+        // Crie e exiba a nova tela de questão
+        TelaQuestao telaQuestao = new TelaQuestao(nomeMateria, assunto, concurso, null, null, null, null);
+        telaQuestao.setVisible(true);
+    }
 
-
-
-
+    public static void main(String[] args) {
+        TelaConsultaQuestoes tela1 = new TelaConsultaQuestoes();
+        tela1.tela();
+        tela1.adicionaPortugues(new Portugues("portugues", "Fácil", "Portugues", "Facil", "Titulo", "Enunciado", "Resposta", "Assunto"));
+        tela1.adicionaMatematica(new Matematica("Matematica", "Multiplicação", "Ministerio Fazenda", "Ministerio Fazenda", true, "Resposta", "title", "title"));
+    }
 }
