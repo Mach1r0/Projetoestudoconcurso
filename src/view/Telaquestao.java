@@ -16,7 +16,8 @@ public class TelaQuestao extends JFrame implements ActionListener {
     private JLabel provaLabel;
     private JButton respostaButton;
 
-    public TelaQuestao(String nomeMateria, String enunciado, String grauDificuldade, String resposta, String assunto, String concurso, String prova) {
+    public TelaQuestao(String nomeMateria, String enunciado, String grauDificuldade,
+     String resposta, String assunto, String concurso, String prova) {
         setTitle(nomeMateria);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());

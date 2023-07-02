@@ -96,6 +96,7 @@ public class TelaCadastroConcurso extends JFrame implements ActionListener {
         add(Cancelar);
 
         Consultar.setBounds(50, 310, 320, 25);
+        Consultar.addActionListener(this);
         add(Consultar);
 
         setVisible(true);
@@ -128,12 +129,17 @@ public class TelaCadastroConcurso extends JFrame implements ActionListener {
             Limpa(e);
         }
         if (src == Excluir) {
-            apagarConcurso(e);
+            ;
         }
         if (src == Consultar) {
-            TelaConsultaConcurso tela = new TelaConsultaConcurso();
-            tela.setVisible(true);
+            telaconsultaConcurso();
         }
+        
+    }
+      public void telaconsultaConcurso() {
+        TelaConsultaConcurso telaconsultadoconcurso = new TelaConsultaConcurso();
+        telaconsultadoconcurso.setLocationRelativeTo(null);
+        telaconsultadoconcurso.setVisible(true);
     }
 
     public void cadastrarbutton(ActionEvent evt) {
